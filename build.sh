@@ -6,9 +6,9 @@ if [ ! -f main.cpp ]; then
     exit 1
 fi
 
-# Menggunakan pkg-config untuk mendapatkan flag kompilasi dan pustaka GTK
-CFLAGS=$(pkg-config --cflags gtk+-3.0)
-LIBS=$(pkg-config --libs gtk+-3.0)
+# Menggunakan pkgconf untuk mendapatkan flag kompilasi dan pustaka GTK
+CFLAGS=$(pkgconf gtk+-3.0 --cflags)
+LIBS=$(pkgconf gtk+-3.0 --libs)
 
 # Mengompilasi program menggunakan g++
 g++ -g main.cpp -o game_suit $CFLAGS $LIBS
