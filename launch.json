@@ -1,0 +1,47 @@
+{
+  "version": "0.2.0"
+  "configurations": [
+    {
+      "name": "Debug C++ with
+GTK",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "$
+{workspaceFolder}/a.out",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "$
+{workspaceFolder}",
+      "evironment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description":
+"Enable pretty-printing for
+gdb",
+          "text":
+"-enable-pretty-printing",
+          "ignoreFilures":
+true
+        }
+      ],
+      "miDebuggerPath": "/usr/
+bin/gdb",
+      "preLaunchTask": "build",
+"miDebuggerServerAddress":
+"localhost:1234",
+      "visualizerFile": "$
+{workspaceFolder}/ .vscode/
+gdb-visualizers",
+      "windows": {
+        "MIMode": "gdb"
+      },
+      "osx": {
+      },
+      "linux": {
+        "MIMode": "gdb"
+      }
+    }
+  ]
+}
