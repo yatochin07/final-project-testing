@@ -121,47 +121,64 @@ int bestMove() {
 
 int main() {
     srand(time(0)); // Seed untuk random number generator
-
-    int player = 1, i, choice;
-    char mark;
     int mode;
-
-    cout << "Pilih mode permainan:\n1. Pemain vs Pemain\n2. Pemain vs Komputer\n";
-    cin >> mode;
+    char playAgain;
 
     do {
+        int player = 1, i, choice;
+        char mark;
+
+        cout << "Pilih mode permainan:\n1. Pemain vs Pemain\n2. Pemain vs Komputer\n";
+        cin >> mode;
+
+        // Inisialisasi ulang papan untuk setiap permainan baru
+        square[1] = '1';
+        square[2] = '2';
+        square[3] = '3';
+        square[4] = '4';
+        square[5] = '5';
+        square[6] = '6';
+        square[7] = '7';
+        square[8] = '8';
+        square[9] = '9';
+
+        do {
+            board();
+            player = (player % 2) ? 1 : 2; // Menentukan giliran pemain
+            mark = (player == 1) ? 'X' : 'O'; // Penentuan simbol pemain
+
+            // Pilihan jika bermain dengan pemain lain atau dengan komputer
+            if (mode == 1 || (mode == 2 && player == 1)) {
+                cout << "Player " << player << ", masukkan angka : ";
+                cin >> choice;
+            } else if (mode == 2 && player == 2) {
+                choice = bestMove(); // Komputer memilih langkah terbaik
+                cout << "Komputer memilih tempat: " << choice << endl;
+            }
+
+            if (choice >= 1 && choice <= 9 && square[choice] != 'X' && square[choice] != 'O') {
+                square[choice] = mark;
+            } else {
+                cout << "TEMPAT TIDAK VALID. Coba lagi.\n";
+                player--; // Batalkan giliran pemain jika langkah tidak valid
+            }
+
+            i = checkwin();
+            player++;
+        } while (i == -1); // Teruskan permainan sampai ada pemenang atau draw
+
         board();
-        player = (player % 2) ? 1 : 2; // Menentukan giliran pemain
-        mark = (player == 1) ? 'X' : 'O'; // Penentuan simbol pemain
-
-        // Pilihan jika bermain dengan pemain lain atau dengan komputer
-        if (mode == 1 || (mode == 2 && player == 1)) {
-            cout << "Player " << player << ", masukkan angka : ";
-            cin >> choice;
-        } else if (mode == 2 && player == 2) {
-            choice = bestMove(); // Komputer memilih langkah terbaik
-            cout << "Komputer memilih tempat: " << choice << endl;
-        }
-
-        if (choice >= 1 && choice <= 9 && square[choice] != 'X' && square[choice] != 'O') {
-            square[choice] = mark;
+        if (i == 1) {
+            cout << "\aSELAMAT! PLAYER " << --player << " ADALAH PEMENANGNYA!" << endl;
         } else {
-            cout << "TEMPAT TIDAK VALID. Coba lagi.\n";
-            player--; // Batalkan giliran pemain jika langkah tidak valid
+            cout << "\aGAME DRAW!" << endl;
         }
 
-        i = checkwin();
-        player++;
-    } while (i == -1); // Teruskan permainan sampai ada pemenang atau draw
+        cout << "Apakah Anda ingin mengulangi permainan? (Y/N): ";
+        cin >> playAgain;
 
-    board();
-    if (i == 1) {
-        cout << "\aSELAMAT! PLAYER " << --player << " ADALAH PEMENANGNYA!" << endl;
-    } else {
-        cout << "\aGAME DRAW!" << endl;
-    }
+    } while (playAgain == 'Y' || playAgain == 'y');
 
-    cin.ignore();
-    cin.get();
+    cout << "Terima kasih telah bermain!" << endl;
     return 0;
 }
