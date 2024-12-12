@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <climits>
 
 using namespace std;
 
@@ -8,7 +9,7 @@ char square[10] = {'O', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
 // Fungsi untuk memeriksa status kemenangan
 int checkwin() {
-    if(square[1] == square[2] && square[2] == square[3]) {
+    if (square[1] == square[2] && square[2] == square[3]) {
         return 1;
     } else if (square[4] == square[5] && square[5] == square[6]) {
         return 1;
@@ -50,12 +51,71 @@ void board() {
     cout << "     |       |     " << endl;
 }
 
-// Fungsi untuk memilih langkah komputer secara acak
-int computerMove() {
-    int move;
-    do {
-        move = rand() % 9 + 1; // Pilih angka acak antara 1-9
-    } while (square[move] == 'X' || square[move] == 'O'); // Pastikan langkah valid
+// Fungsi untuk memeriksa apakah sebuah langkah valid
+bool isMoveValid(int move) {
+    return (move >= 1 && move <= 9 && square[move] != 'X' && square[move] != 'O');
+}
+
+// Fungsi Minimax untuk memilih langkah terbaik
+int minimax(int depth, bool isMaximizingPlayer) {
+    int score = checkwin();
+
+    // Jika komputer menang
+    if (score == 1) {
+        return 10 - depth;
+    }
+    // Jika pemain menang
+    if (score == 0) {
+        return depth - 10;
+    }
+    // Jika permainan seri
+    if (score == -1) {
+        return 0;
+    }
+
+    // Jika giliran komputer (Maximizing player)
+    if (isMaximizingPlayer) {
+        int best = INT_MIN;
+        for (int i = 1; i <= 9; i++) {
+            if (isMoveValid(i)) {
+                square[i] = 'X'; // Tempatkan langkah komputer
+                best = max(best, minimax(depth + 1, false));
+                square[i] = char(i + '0'); // Batalkan langkah komputer
+            }
+        }
+        return best;
+    }
+    // Jika giliran pemain (Minimizing player)
+    else {
+        int best = INT_MAX;
+        for (int i = 1; i <= 9; i++) {
+            if (isMoveValid(i)) {
+                square[i] = 'O'; // Tempatkan langkah pemain
+                best = min(best, minimax(depth + 1, true));
+                square[i] = char(i + '0'); // Batalkan langkah pemain
+            }
+        }
+        return best;
+    }
+}
+
+// Fungsi untuk memilih langkah terbaik komputer
+int bestMove() {
+    int bestVal = INT_MIN;
+    int move = -1;
+
+    for (int i = 1; i <= 9; i++) {
+        if (isMoveValid(i)) {
+            square[i] = 'X'; // Tempatkan langkah komputer
+            int moveVal = minimax(0, false);
+            square[i] = char(i + '0'); // Batalkan langkah komputer
+
+            if (moveVal > bestVal) {
+                move = i;
+                bestVal = moveVal;
+            }
+        }
+    }
     return move;
 }
 
@@ -79,7 +139,7 @@ int main() {
             cout << "Player " << player << ", masukkan angka : ";
             cin >> choice;
         } else if (mode == 2 && player == 2) {
-            choice = computerMove(); // Komputer memilih langkah
+            choice = bestMove(); // Komputer memilih langkah terbaik
             cout << "Komputer memilih tempat: " << choice << endl;
         }
 
