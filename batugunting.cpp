@@ -59,7 +59,11 @@ string inputPilihanPlayer() {
 int main() {
     srand(static_cast<unsigned int>(time(0))); //inisialisasi angka acak
 
+    int skorPlayer = 0;
+    int skorKomputer = 0;
+
     char mainLagi;
+
     do {
         pilihan();
         string pilihanPlayer = inputPilihanPlayer();
@@ -79,6 +83,14 @@ int main() {
         string hasil = pemenang(pilihanPlayer, pilihanKomputer);
         cout << "\n\tHasil\t\t\t\t: " << hasil << endl;
 
+        if (hasil == "Player Menang") {
+            skorPlayer++;
+        } else if (hasil == "Komputer Menang") {
+            skorKomputer++;
+        }
+        cout << "\n\tSkor sementara : " << endl;
+        cout << "\tPlayer " << skorPlayer << " - " << skorKomputer << " Komputer" << endl;
+
         cout << "\n\tIngin Bermain Lagi? (y/t)\t: ";
         cin >> mainLagi;
 
@@ -87,5 +99,17 @@ int main() {
         }
 
     } while (mainLagi == 'y' || mainLagi == 'Y');
+    cout << "\n\tSkor Akhir :" << endl;
+    cout << "\tPlayer " << skorPlayer << " - " << skorKomputer << " Komputer" << endl;
+    
+    if (skorKomputer > skorPlayer) {
+       cout << "\tPemenang adalah Komputer." << endl;
+    }
+    if (skorPlayer > skorKomputer) {
+        cout << "\tPemenang adalah Player." << endl;
+    }
+    if (skorPlayer == skorKomputer) {
+        cout << "\tHasil adalah seri." << endl;
+    }
     cout << "\n\tTerima Kasih Sudah Bermain." << endl;
 }
