@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <climits>
+#include <chrono>
 
 using namespace std;
 
@@ -43,7 +44,8 @@ int checkwin() {
     } 
     else if (square[1] != '1' && square[2] != '2' && square[3] != '3' &&
                square[4] != '4' && square[5] != '5' && square[6] != '6' &&
-               square[7] != '7' && square[8] != '8' && square[9] != '9') {
+               square[7] != '7' && square[8] != '8' && square[9] != '9') 
+    {
         return 0; // Draw
     } 
     else 
@@ -159,7 +161,8 @@ int main()
     int mode;
     char playAgain;
 
-    do {
+    do 
+    {
         system("clear");
         int player = 1, i, choice;
         char mark;
@@ -184,7 +187,7 @@ int main()
             player = (player % 2) ? 1 : 2; // Menentukan giliran pemain
             mark = (player == 1) ? 'X' : 'O'; // Penentuan simbol pemain
 
-            // Pilihan jika bermain dengan pemain lain atau dengan komputer
+            // Pilihan jika bermain melawan player atau dengan komputer
             if (mode == 1 || (mode == 2 && player == 1)) 
             {
                 cout << "Player " << player << ", masukkan angka : ";
@@ -193,7 +196,7 @@ int main()
             else if (mode == 2 && player == 2) 
             {
                 choice = bestMove(); // Komputer memilih langkah terbaik
-                cout << "Komputer memilih tempat: " << choice << endl;
+                cout << "Komputer memilih tempat : " << choice << endl;
             }
 
             if (choice >= 1 && choice <= 9 && square[choice] != 'X' && square[choice] != 'O') 
