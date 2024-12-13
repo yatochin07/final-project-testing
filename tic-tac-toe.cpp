@@ -9,7 +9,8 @@ using namespace std;
 char square[10] = {'O', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
 // Fungsi untuk memeriksa status kemenangan
-int checkwin() {
+int checkwin() 
+{
     if (square[1] == square[2] && square[2] == square[3]) 
     {
         return 1;
