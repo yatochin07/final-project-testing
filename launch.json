@@ -1,37 +1,29 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Debug C++ with GTK",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "${workspaceFolder}/a.out",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
-      "environment": [],
-      "externalConsole": false,
-      "MIMode": "gdb",
-      "setupCommands": [
+    "version": "0.2.0",
+    "configurations": [
         {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
+            "name": "Debug TicTacToeSFML",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/TicTacToeSFML",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "miDebuggerPath": "/usr/bin/gdb",
+            "preLaunchTask": "build",
+            "internalConsoleOptions": "openOnSessionStart",
+            "cppStandard": "c++17",
+            "defines": []
         }
-      ],
-      "miDebuggerPath": "/usr/bin/gdb",
-      "preLaunchTask": "build",
-      "miDebuggerServerAddress": "localhost:1234",
-      "visualizerFile": "${workspaceFolder}/.vscode/gdb-visualizers",
-      "windows": {
-        "MIMode": "gdb"
-      },
-      "osx": {
-        "MIMode": "lldb"
-      },
-      "linux": {
-        "MIMode": "gdb"
-      }
-    }
-  ]
+    ]
 }
