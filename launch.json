@@ -1,18 +1,23 @@
 {
+    "version": 4,
     "configurations": [
         {
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/include/SFML",  // Pastikan path header SFML benar
-                "/usr/include/c++/11"  // Path untuk standar C++ (sesuaikan dengan versi di sistem Anda)
+                "/usr/include/SFML/**",
+                "/usr/include/c++/11",  // Atur versi C++ yang sesuai
+                "/usr/include/c++/11/x86_64-linux-gnu"
             ],
             "defines": [],
-            "compilerPath": "/usr/bin/g++",  // Pastikan path ke compiler C++ di sistem Anda
-            "cStandard": "c11",
-            "cppStandard": "c++17",  // Pilih versi standar C++ yang sesuai
-            "intelliSenseMode": "gcc-x64"
+            "compilerPath": "/usr/bin/g++",  // Pastikan path compiler sudah benar
+            "intelliSenseMode": "linux-gcc-x64",
+            "browse": {
+                "path": [
+                    "/usr/include/SFML/**",
+                    "/usr/include/c++/11"
+                ]
+            }
         }
-    ],
-    "version": 4
+    ]
 }
