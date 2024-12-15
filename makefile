@@ -1,28 +1,17 @@
-# Nama kompilator dan flag
-CXX = g++
-CXXFLAGS = -std=c++17 -I./TIC-TAC-TOE -I./SUDOKU -I./SUIT -I./TTS
+cmake_minimum_required(VERSION 3.10)
+project(TicTacToeSFML)
 
-# Nama file output
-TARGET = game_program
+# Mengatur standar C++
+set(CMAKE_CXX_STANDARD 11)
 
-# Daftar file sumber (semua .cpp dalam subfolder)
-SOURCES = main.cpp \
-          TIC-TAC-TOE/game1.cpp \
-          SUDOKU/game2.cpp \
-          SUIT/game3.cpp \
-          TTS/game4.cpp
+# Temukan paket SFML
+find_package(SFML 2.5 REQUIRED graphics window system)
 
-# Daftar file objek yang dihasilkan
-OBJECTS = $(SOURCES:.cpp=.o)
+# Tentukan file sumber
+set(SOURCES src/main.cpp)
 
-# Aturan untuk membangun target
-$(TARGET): $(OBJECTS)
-	$(CXX) $(OBJECTS) -o $(TARGET)
+# Buat executable
+add_executable(TicTacToeSFML ${SOURCES})
 
-# Aturan untuk mengompilasi file .cpp menjadi file objek .o
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# Aturan untuk membersihkan file objek dan target
-clean:
-	rm -f $(OBJECTS) $(TARGET)
+# Link dengan SFML
+target_link_libraries(TicTacToeSFML sfml-graphics sfml-window sfml-system)
