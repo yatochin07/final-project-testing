@@ -1,17 +1,21 @@
-cmake_minimum_required(VERSION 3.10)
-project(TicTacToeSFML)
+CXX = g++
+CXXFLAGS = -std=c++14 -Wall -g
+LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 
-# Mengatur standar C++
-set(CMAKE_CXX_STANDARD 11)
+SRCS = main.cpp
+OBJS = $(SRCS:.cpp=.o)
+EXEC = game
 
-# Temukan paket SFML
-find_package(SFML 2.5 REQUIRED graphics window system)
+# Target default: mengkompilasi dan menghubungkan
+all: $(EXEC)
 
-# Tentukan file sumber
-set(SOURCES src/main.cpp)
+$(EXEC): $(OBJS)
+    $(CXX) $(OBJS) -o $(EXEC) $(LDFLAGS)
 
-# Buat executable
-add_executable(TicTacToeSFML ${SOURCES})
+# Kompilasi file .cpp menjadi .o
+.cpp.o:
+    $(CXX) $(CXXFLAGS) -c $<
 
-# Link dengan SFML
-target_link_libraries(TicTacToeSFML sfml-graphics sfml-window sfml-system)
+# Menghapus file objek dan eksekusi
+clean:
+    rm -f $(OBJS) $(EXEC)
