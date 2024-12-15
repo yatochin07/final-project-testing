@@ -5,17 +5,25 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/include/SFML/**",
-                "/usr/include/c++/11",  // Ganti dengan versi yang sesuai dengan sistem Anda
-                "/usr/include/c++/11/x86_64-linux-gnu"  // Sesuaikan dengan path yang benar
+                "/usr/include/c++/14",  // Gunakan versi yang ditemukan di sistem Anda
+                "/usr/include/c++/14/x86_64-redhat-linux",
+                "/usr/include/c++/14/x86_64-redhat-linux/ext",
+                "/usr/include/c++/14/x86_64-redhat-linux/bits",
+                "/usr/include/c++/14/parallel",
+                "/usr/include/c++/14/bits",
+                "/usr/include/c++/14/tr2",
+                "/usr/include/c++/14/tr1",
+                "/usr/include/c++/14/experimental",
+                "/usr/include/c++/14/experimental/bits"
             ],
             "defines": [],
-            "compilerPath": "/usr/bin/g++",  // Pastikan path ke compiler sudah benar
+            "compilerPath": "/usr/bin/g++",  // Pastikan path ke compiler benar
             "intelliSenseMode": "linux-gcc-x64",
             "browse": {
                 "path": [
-                    "/usr/include/SFML/**",
-                    "/usr/include/c++/11"
+                    "/usr/include/c++/14/x86_64-redhat-linux",
+                    "/usr/include/c++/14/parallel",
+                    "/usr/include/c++/14/bits"
                 ]
             }
         }
