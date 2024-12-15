@@ -19,3 +19,6 @@ $(EXEC): $(OBJS)
 # Menghapus file objek dan eksekusi
 clean:
     rm -f $(OBJS) $(EXEC)
+
+
+g++ -std=c++14 -Wall -I/usr/include/SFML -L/usr/lib64 -lsfml-graphics -lsfml-window -lsfml-system main.cpp -o game
