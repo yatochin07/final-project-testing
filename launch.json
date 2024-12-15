@@ -6,11 +6,11 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "/usr/include/SFML/**",
-                "/usr/include/c++/11",  // Atur versi C++ yang sesuai
-                "/usr/include/c++/11/x86_64-linux-gnu"
+                "/usr/include/c++/11",  // Ganti dengan versi yang sesuai dengan sistem Anda
+                "/usr/include/c++/11/x86_64-linux-gnu"  // Sesuaikan dengan path yang benar
             ],
             "defines": [],
-            "compilerPath": "/usr/bin/g++",  // Pastikan path compiler sudah benar
+            "compilerPath": "/usr/bin/g++",  // Pastikan path ke compiler sudah benar
             "intelliSenseMode": "linux-gcc-x64",
             "browse": {
                 "path": [
