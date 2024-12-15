@@ -1,27 +1,18 @@
 {
-    "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug TicTacToeSFML",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/main",  // Path ke executable yang sudah dibangun
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": true,
-            "MIMode": "gdb",  // Menggunakan gdb untuk debugging
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/include/SFML",  // Pastikan path header SFML benar
+                "/usr/include/c++/11"  // Path untuk standar C++ (sesuaikan dengan versi di sistem Anda)
             ],
-            "miDebuggerPath": "/usr/bin/gdb",  // Path ke gdb, sesuaikan jika perlu
-            "preLaunchTask": "build",  // Memastikan build dilakukan sebelum menjalankan
-            "internalConsoleOptions": "openOnSessionStart"
+            "defines": [],
+            "compilerPath": "/usr/bin/g++",  // Pastikan path ke compiler C++ di sistem Anda
+            "cStandard": "c11",
+            "cppStandard": "c++17",  // Pilih versi standar C++ yang sesuai
+            "intelliSenseMode": "gcc-x64"
         }
-    ]
+    ],
+    "version": 4
 }
