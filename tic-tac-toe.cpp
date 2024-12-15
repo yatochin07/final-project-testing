@@ -209,8 +209,3 @@ int main() {
 
         cout << "Apakah Anda ingin mengulangi permainan? (y/n): ";
         cin >> playAgain;
-    } while (playAgain == 'Y' || playAgain == 'y');
-
-    cout << "Terima kasih telah bermain!" << endl;
-    return 0;
-}
