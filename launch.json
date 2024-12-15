@@ -5,13 +5,13 @@
             "name": "Debug TicTacToeSFML",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/TicTacToeSFML",
+            "program": "${workspaceFolder}/build/main",  // Pastikan nama file eksekusi sesuai dengan yang dihasilkan
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": true,
-            "MIMode": "gdb",
+            "externalConsole": true,  // Menjalankan program di terminal eksternal
+            "MIMode": "gdb",  // Menggunakan GDB untuk debugging
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -19,22 +19,20 @@
                     "ignoreFailures": true
                 }
             ],
-            "miDebuggerPath": "/usr/bin/gdb",
-            "preLaunchTask": "build",
+            "miDebuggerPath": "/usr/bin/gdb",  // Pastikan path ke gdb benar
+            "preLaunchTask": "build",  // Menjalankan build sebelum debugging
             "internalConsoleOptions": "openOnSessionStart",
-            "cppStandard": "c++17",  // Pastikan Anda menggunakan standar C++ yang sesuai dengan proyek
-            "defines": [
-                "_DEBUG"
-            ],
+            "cppStandard": "c++17",  // Gunakan standar C++ yang sesuai, misalnya C++17
+            "defines": [],
             "includePath": [
-                "${workspaceFolder}/**",
-                "/usr/include/SFML",  // Pastikan path ini sesuai dengan lokasi instalasi SFML
-                "/usr/include"
+                "${workspaceFolder}/**",  // Sertakan semua file di folder proyek
+                "/usr/include/SFML",  // Pastikan path header SFML sesuai
+                "/usr/include/c++/11"  // Sertakan path untuk standar C++ (sesuaikan dengan versi di sistem Anda)
             ],
             "browse": {
                 "path": [
                     "${workspaceFolder}",
-                    "/usr/include/SFML"
+                    "/usr/include/SFML"  // Menambahkan path untuk browsing header SFML
                 ],
                 "limitSymbolsToIncludedHeaders": true
             }
