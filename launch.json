@@ -22,8 +22,22 @@
             "miDebuggerPath": "/usr/bin/gdb",
             "preLaunchTask": "build",
             "internalConsoleOptions": "openOnSessionStart",
-            "cppStandard": "c++17",
-            "defines": []
+            "cppStandard": "c++17",  // Pastikan Anda menggunakan standar C++ yang sesuai dengan proyek
+            "defines": [
+                "_DEBUG"
+            ],
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/include/SFML",  // Pastikan path ini sesuai dengan lokasi instalasi SFML
+                "/usr/include"
+            ],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}",
+                    "/usr/include/SFML"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
         }
     ]
 }
