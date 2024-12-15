@@ -5,13 +5,13 @@
             "name": "Debug TicTacToeSFML",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/main",  // Pastikan nama file eksekusi sesuai dengan yang dihasilkan
+            "program": "${workspaceFolder}/build/main",  // Path ke executable yang sudah dibangun
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": true,  // Menjalankan program di terminal eksternal
-            "MIMode": "gdb",  // Menggunakan GDB untuk debugging
+            "externalConsole": true,
+            "MIMode": "gdb",  // Menggunakan gdb untuk debugging
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -19,23 +19,9 @@
                     "ignoreFailures": true
                 }
             ],
-            "miDebuggerPath": "/usr/bin/gdb",  // Pastikan path ke gdb benar
-            "preLaunchTask": "build",  // Menjalankan build sebelum debugging
-            "internalConsoleOptions": "openOnSessionStart",
-            "cppStandard": "c++17",  // Gunakan standar C++ yang sesuai, misalnya C++17
-            "defines": [],
-            "includePath": [
-                "${workspaceFolder}/**",  // Sertakan semua file di folder proyek
-                "/usr/include/SFML",  // Pastikan path header SFML sesuai
-                "/usr/include/c++/11"  // Sertakan path untuk standar C++ (sesuaikan dengan versi di sistem Anda)
-            ],
-            "browse": {
-                "path": [
-                    "${workspaceFolder}",
-                    "/usr/include/SFML"  // Menambahkan path untuk browsing header SFML
-                ],
-                "limitSymbolsToIncludedHeaders": true
-            }
+            "miDebuggerPath": "/usr/bin/gdb",  // Path ke gdb, sesuaikan jika perlu
+            "preLaunchTask": "build",  // Memastikan build dilakukan sebelum menjalankan
+            "internalConsoleOptions": "openOnSessionStart"
         }
     ]
 }
