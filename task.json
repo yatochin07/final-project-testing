@@ -6,20 +6,17 @@
             "type": "shell",
             "command": "cmake",
             "args": [
-                "-DCMAKE_BUILD_TYPE=Debug",
-                "."
+                "--build",
+                "${workspaceFolder}/build",
+                "--config",
+                "Debug"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
-        },
-        {
-            "label": "build and run",
-            "type": "shell",
-            "command": "./build/TicTacToeSFML",
-            "group": "build",
-            "dependsOn": "build"
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Generated task by Debugger."
         }
     ]
 }
